@@ -2,6 +2,7 @@ from fastapi import FastAPI, APIRouter, Request, Form, status
 from fastapi.responses import RedirectResponse
 from fastapi.templating import Jinja2Templates
 from database_builder import *
+import uvicorn
 
 templates = Jinja2Templates(directory="templates")
 
@@ -97,3 +98,7 @@ def overdue(request: Request):
     return templates.TemplateResponse(
         "overdue.html", {"request": request, "database": temp, "column": column}
     )
+
+
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)
