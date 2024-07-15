@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haziq EXS Synergy Assessment</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="flex flex-col items-center justify-center h-screen bg-gray-200">
+    <h1 class="mb-8 text-2xl font-bold">Library Management System</h1>
+    <div class="flex gap-4">
+        <button onclick="location.href='{{ url_for('all') }}';"
+            class="px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-600">Get all users</button>
+        <button onclick="location.href='{{ url_for('register') }}';"
+            class="px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-600">Create a new user</button>
+        <button onclick="location.href='{{ url_for('update') }}';"
+            class="px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-600">Update user</button>
+        <button button onclick="location.href='{{ url_for('borrow') }}';"
+            class="px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-600">Borrow book</button>
+        <button button onclick="location.href='{{ url_for('overdue') }}';"
+            class="px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-600">List of overdues</button>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haziq EXS Synergy</title>
+    <link href="https://cdn.tailwindcss.com" rel="stylesheet">
+</head>
+
+<body class="p-8 bg-gray-200">
+    <h1 class="mb-6 text-3xl font-bold text-center">User List</h1>
+    <div class="overflow-x-auto">
+        <table class="min-w-full bg-white border border-gray-300 divide-y divide-gray-200">
+            <thead class="bg-gray-50">
+                <tr>
+                    <th class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">ID</th>
+                    <th class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">Name</th>
+                    <th class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">Address
+                    </th>
+                    <th class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">Contact
+                    </th>
+                    <th class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">Penalty
+                    </th>
+                    <th class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">Books
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200">
+                {% for user in database %}
+                <tr>
+                    <td class="px-6 py-4 text-sm text-gray-900">{{ user.id }}</td>
+                    <td class="px-6 py-4 text-sm text-gray-900">{{ user.name }}</td>
+                    <td class="px-6 py-4 text-sm text-gray-900">{{ user.address }}</td>
+                    <td class="px-6 py-4 text-sm text-gray-900">{{ user.contact }}</td>
+                    <td class="px-6 py-4 text-sm text-gray-900">{{ user.penalty }}</td>
+                    {% for book in user.books %}
+                    <td class="px-6 py-4 text-sm text-gray-900">
+                        <p>
+                            {{book.id}} {{book.title}} {{book.author}}
+                            {{book.rent_date}} {{book.due_date}}</p>
+                    </td>
+                    {% endfor %}
+
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <button onclick="location.href='{{ url_for('root') }}';"
+        class="px-4 py-2 text-white bg-gray-500 rounded hover:bg-gray-600">Back</button>
+</body>
+
+</html>
