@@ -83,4 +83,17 @@ async def borrow_post(
 
 @app.get("/overdue")
 def overdue(request: Request):
-    return templates.TemplateResponse("overdue.html", {"request": request})
+    # Calculate overdue penalty
+    temp = []
+    for user in database:
+        user.calculate_total_penalty()
+        if user.penalty > 0:
+            temp.append(user)
+    for user in temp:
+        for book in user.books:
+            if book.calculate_penalty == 0:
+                user.books.remove(book)
+
+    return templates.TemplateResponse(
+        "overdue.html", {"request": request, "database": temp, "column": column}
+    )

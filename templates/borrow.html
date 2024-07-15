@@ -10,8 +10,36 @@
 
 <body class="flex flex-col items-center justify-center h-screen bg-gray-200">
     <h1 class="mb-8 text-2xl font-bold">Borrow a book</h1>
-    <button onclick="location.href='{{ url_for('root') }}';"
-        class="px-4 py-2 text-white bg-gray-500 rounded hover:bg-gray-600">Back</button>
+    <form action="/borrow" method="post">
+        <div class="mb-4">
+            <label for="id" class="block mb-2 text-sm font-medium text-gray-700">User ID</label>
+            <input type="text" id="id" name="id"
+                class="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+        </div>
+        <div class="mb-4">
+            <label for="title" class="block mb-2 text-sm font-medium text-gray-700">Book Title</label>
+            <input type="text" id="title" name="title"
+                class="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+        </div>
+        <div class="mb-4">
+            <label for="author" class="block mb-2 text-sm font-medium text-gray-700">Book Author</label>
+            <input type="text" id="author" name="author"
+                class="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+        </div>
+        <div class="mb-4">
+            <label for="book_id" class="block mb-2 text-sm font-medium text-gray-700">Book ID</label>
+            <input type="text" id="book_id" name="book_id"
+                class="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+        </div>
+
+        <div class="flex items-center justify-between">
+            <button type="submit"
+                class="px-4 py-2 font-semibold text-white bg-blue-500 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">Borrow
+                Book</button>
+            <button onclick="location.href='{{ url_for('root') }}';"
+                class="px-4 py-2 text-white bg-gray-500 rounded hover:bg-gray-600">Back</button>
+        </div>
+    </form>
 </body>
 
 </html>
